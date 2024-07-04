@@ -46,5 +46,8 @@ COPY --from=builder /app/sql/migrations /migrations
 # Copy the .env file
 COPY --from=builder /app/.env /root/.env
 
+# Verify the presence of goose and migration files
+RUN ls -la /migrations
+
 # Command to run the Go application
 CMD ["go-iris-api-test"]

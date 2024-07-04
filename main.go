@@ -23,7 +23,12 @@ func main(){
 
 	log.Printf("Server running on port %v", portStr)
 
-	
+	dbURL := os.Getenv("DB_URL")
+
+	if dbURL == "" {
+		log.Fatal("DB_URL is not found in the environment")
+	}
+
 
 	srv := &http.Server{
 		Addr: ":" + portStr,
